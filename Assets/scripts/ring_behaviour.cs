@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ring_behaviour : MonoBehaviour
 {
     public bool shift;
@@ -15,9 +16,11 @@ public class ring_behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if the ring needs to shift
         if (shift)
         {
             shift = false;
+            //shift each tile in the ring in once
             foreach (Transform child in transform)
             {
                 GameObject chil = child.gameObject;
