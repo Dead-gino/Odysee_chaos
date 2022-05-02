@@ -12,8 +12,8 @@ public class tile_behaviour : MonoBehaviour
     private Transform position;
     private TextMeshPro text;
 
-    [Range(0.0f, 20.0f)]
-    public float number;
+    [Range(0, 20)]
+    public int number;
 
     private int ring_amount = 4;
 
@@ -75,8 +75,7 @@ public class tile_behaviour : MonoBehaviour
     // Display the given float as text on the tile
     void Display_num(float num)
     {
-        int val = (int) num;
-        string text_num = val.ToString();
+        string text_num = num.ToString();
         text.text = text_num;
     }
 }
