@@ -15,6 +15,8 @@ public class tile_behaviour : MonoBehaviour
     [Range(0.0f, 20.0f)]
     public float number;
 
+    private int ring_amount = 4;
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,14 +56,17 @@ public class tile_behaviour : MonoBehaviour
     // if it would enter the center, dissable for now.
     void Shift_in()
     {
+
+        Vector3 direction = this.transform.position - center.position;
+        direction = direction / ring;
+
         if (ring <= 1)
             {
-            this.gameObject.SetActive(false);
+            ring = ring_amount;
+            this.transform.Translate(direction * (ring_amount - 1));
             }
         else
             {
-            Vector3 direction = this.transform.position - center.position;
-            direction = direction / ring;
             this.transform.Translate(-direction);
             ring--;
             }
