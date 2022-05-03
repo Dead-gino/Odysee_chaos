@@ -7,6 +7,8 @@ public class ring_behaviour : MonoBehaviour
 {
     public bool shift;
     public List<GameObject> tiles;
+    public int ring;
+    public int ring_max;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,18 @@ public class ring_behaviour : MonoBehaviour
             {
                 GameObject chil = child.gameObject;
                 tile_behaviour behav = (tile_behaviour)chil.GetComponent("tile_behaviour");
+                behav.ring = ring;
+                behav.ring_amount = ring_max;
                 behav.shift = true;
+            }
+
+            if (ring == 1)
+            {
+                ring = ring_max;
+            }
+            else
+            {
+                ring--;
             }
         }
     }

@@ -12,11 +12,13 @@ public class tile_behaviour : MonoBehaviour
     private Transform position;
     private TextMeshPro text;
     private bool rolled;
+    private bool clicked;
+    public int ring_amount;
 
     [Range(0, 20)]
     public int number;
 
-    private int ring_amount = 4;
+    private board_behaviour board;
 
 
     // Start is called before the first frame update
@@ -28,11 +30,15 @@ public class tile_behaviour : MonoBehaviour
         number = -1;
         text = this.transform.GetChild(0).GetComponent<TextMeshPro>();
         rolled = false;
+        board = this.transform.parent.parent.gameObject.GetComponent<board_behaviour>();
+        clicked = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         //display the selected number
         Display_num(number);
 
@@ -56,33 +62,38 @@ public class tile_behaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("click");
-        reveal = !reveal;
-        if (!rolled)
+        if (!clicked)
         {
-            Roll_position();
-            rolled = true;
+            clicked = true;
+            reveal = !reveal;
+            if (!rolled)
+            {
+                Roll_position(-1);
+                rolled = true;
+            }
         }
+    }
+    private void OnMouseUp()
+    {
+        clicked = false;
     }
 
     // Shift the tile in one ring
     // if it would enter the center, dissable for now.
     void Shift_in()
     {
-
         Vector3 direction = this.transform.position - center.position;
         direction = direction / ring;
 
-        if (ring <= 1)
+        if (ring == 1)
             {
-            ring = ring_amount;
             this.transform.Translate(direction * (ring_amount - 1));
             reveal = false;
+            Roll_position(number);
             }
         else
             {
             this.transform.Translate(-direction);
-            ring--;
             }
     }
 
@@ -93,8 +104,9 @@ public class tile_behaviour : MonoBehaviour
         text.text = text_num;
     }
 
-    void Roll_position()
+    void Roll_position(int n)
     {
-        number = Random.Range(1, 20);
+        int num = board.Roll_location(n);
+        number = num;
     }
 }
