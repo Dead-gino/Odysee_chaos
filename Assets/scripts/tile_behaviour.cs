@@ -32,6 +32,8 @@ public class tile_behaviour : MonoBehaviour
         rolled = false;
         board = this.transform.parent.parent.gameObject.GetComponent<board_behaviour>();
         clicked = false;
+
+        Roll_position(-1);
     }
 
     // Update is called once per frame
@@ -66,11 +68,6 @@ public class tile_behaviour : MonoBehaviour
         {
             clicked = true;
             reveal = !reveal;
-            if (!rolled)
-            {
-                Roll_position(-1);
-                rolled = true;
-            }
         }
     }
     private void OnMouseUp()

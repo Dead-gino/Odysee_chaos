@@ -9,6 +9,7 @@ public class board_behaviour : MonoBehaviour
     public bool Ithaca;
     public bool Troy;
     public bool shift;
+    public bool lose;
 
     private Mutex mut = new Mutex();
 
@@ -18,11 +19,17 @@ public class board_behaviour : MonoBehaviour
         Ithaca = false;
         Troy = false;
         shift = false;
+        lose = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shift = true;
+        }
+
         //if the board needs to shift
         if (shift)
         {
@@ -30,10 +37,24 @@ public class board_behaviour : MonoBehaviour
             //shift each ring on the board once
             foreach (Transform child in transform)
             {
-                GameObject chil = child.gameObject;
-                ring_behaviour behav = (ring_behaviour)chil.GetComponent<ring_behaviour>();
-                behav.shift = true;
+                ring_behaviour behav = child.gameObject.GetComponent<ring_behaviour>();
+                if (behav != null)
+                {
+                    behav.shift = true;
+                    //behav.gameObject.transform.SetSiblingIndex(behav.gameObject.transform.GetSiblingIndex()+1);
+                    if (behav.gameObject.transform.GetSiblingIndex() == (this.transform.childCount - 1))
+                    {
+                        behav.gameObject.transform.SetAsFirstSibling();
+                    }
+                }
             }
+
+            ship_behaviour ship = this.transform.parent.GetChild(0).GetComponent<ship_behaviour>();
+            if (ship != null)
+            {
+                ship.shift = true;
+            }
+            
         }
     }
 
@@ -55,14 +76,14 @@ public class board_behaviour : MonoBehaviour
 
         if (!Ithaca)
         {
-            max = 20;
-        } else if (!Troy)
-        {
-            min = 1;
-        } else
-        {
-            loc = Random.Range(min, max);
+            max = 22;
         }
+        if (!Troy)
+        {
+            min = -1;
+        }
+        loc = Random.Range(min, max);
+
 
         if (loc <= 1)
         {
