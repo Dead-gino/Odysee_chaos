@@ -11,6 +11,7 @@ public class tile_behaviour : MonoBehaviour
     public bool reveal;
     private Transform position;
     private TextMeshPro text;
+    private bool rolled;
 
     [Range(0, 20)]
     public int number;
@@ -24,8 +25,9 @@ public class tile_behaviour : MonoBehaviour
         position = this.transform;
         shift = false;
         reveal = false;
-        number = 0;
+        number = -1;
         text = this.transform.GetChild(0).GetComponent<TextMeshPro>();
+        rolled = false;
     }
 
     // Update is called once per frame
@@ -52,6 +54,17 @@ public class tile_behaviour : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        Debug.Log("click");
+        reveal = !reveal;
+        if (!rolled)
+        {
+            Roll_position();
+            rolled = true;
+        }
+    }
+
     // Shift the tile in one ring
     // if it would enter the center, dissable for now.
     void Shift_in()
@@ -64,6 +77,7 @@ public class tile_behaviour : MonoBehaviour
             {
             ring = ring_amount;
             this.transform.Translate(direction * (ring_amount - 1));
+            reveal = false;
             }
         else
             {
@@ -77,5 +91,10 @@ public class tile_behaviour : MonoBehaviour
     {
         string text_num = num.ToString();
         text.text = text_num;
+    }
+
+    void Roll_position()
+    {
+        number = Random.Range(1, 20);
     }
 }
