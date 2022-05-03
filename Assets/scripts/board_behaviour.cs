@@ -34,6 +34,8 @@ public class board_behaviour : MonoBehaviour
         if (shift)
         {
             shift = false;
+
+            bool sibling = true;
             //shift each ring on the board once
             foreach (Transform child in transform)
             {
@@ -41,13 +43,11 @@ public class board_behaviour : MonoBehaviour
                 if (behav != null)
                 {
                     behav.shift = true;
-                    //behav.gameObject.transform.SetSiblingIndex(behav.gameObject.transform.GetSiblingIndex()+1);
-                    if (behav.gameObject.transform.GetSiblingIndex() == (this.transform.childCount - 1))
-                    {
-                        behav.gameObject.transform.SetAsFirstSibling();
-                    }
+                   
                 }
             }
+
+            this.transform.GetChild(0).SetAsLastSibling();
 
             ship_behaviour ship = this.transform.parent.GetChild(0).GetComponent<ship_behaviour>();
             if (ship != null)
