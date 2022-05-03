@@ -50,17 +50,28 @@ public class board_behaviour : MonoBehaviour
             Ithaca = false;
         }
 
+        int min = 2;
+        int max = 19;
+
         if (!Ithaca)
         {
-            Ithaca = true;
-            loc = 20;
+            max = 20;
         } else if (!Troy)
+        {
+            min = 1;
+        } else
+        {
+            loc = Random.Range(min, max);
+        }
+
+        if (loc <= 1)
         {
             Troy = true;
             loc = 1;
-        } else
+        } else if (loc >= 20)
         {
-            loc = Random.Range(2, 19);
+            Ithaca = true;
+            loc = 20;
         }
             
 
