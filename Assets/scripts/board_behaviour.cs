@@ -72,11 +72,11 @@ public class board_behaviour : MonoBehaviour
         }
 
         int min = 2;
-        int max = 19;
+        int max = 20;
 
         if (!Ithaca)
         {
-            max = 22;
+            max = 23;
         }
         if (!Troy)
         {

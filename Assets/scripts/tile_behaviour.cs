@@ -15,7 +15,7 @@ public class tile_behaviour : MonoBehaviour
     private bool clicked;
     public int ring_amount;
 
-    [Range(0, 20)]
+    [Range(1, 21)]
     public int number;
 
     private board_behaviour board;
