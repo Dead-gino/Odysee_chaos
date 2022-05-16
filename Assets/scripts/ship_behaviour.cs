@@ -26,22 +26,24 @@ public class ship_behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.W))
+        if (board.state == 3)
         {
-            outward = true;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            inward = true;
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            counter_wise = true;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            clockwise = true;
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                outward = true;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                inward = true;
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                counter_wise = true;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                clockwise = true;
+            }
         }
 
         Check_pos();
@@ -72,6 +74,8 @@ public class ship_behaviour : MonoBehaviour
                 inward = true;
             }
         }
+
+        board.Reveal_tile(ring_index, tile_index);
     }
 
     void Check_pos()
@@ -82,6 +86,7 @@ public class ship_behaviour : MonoBehaviour
             if (ring_index > 0)
             {
                 ring_index--;
+                board.Lower_Count();
             }
 
         }
@@ -92,6 +97,7 @@ public class ship_behaviour : MonoBehaviour
             if (ring_index < ring_count)
             {
                 ring_index++;
+                board.Lower_Count();
             }
         }
 
@@ -106,6 +112,7 @@ public class ship_behaviour : MonoBehaviour
             {
                 tile_index++;
             }
+            board.Lower_Count();
         }
 
         if (counter_wise)
@@ -119,6 +126,7 @@ public class ship_behaviour : MonoBehaviour
             {
                 tile_index--;
             }
+            board.Lower_Count();
         }
     }
 }

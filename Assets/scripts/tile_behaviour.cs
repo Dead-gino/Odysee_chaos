@@ -64,10 +64,11 @@ public class tile_behaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!clicked)
+        if (!clicked && !reveal && board.state == 1)
         {
             clicked = true;
-            reveal = !reveal;
+            reveal = true;
+            board.Lower_Count();
         }
     }
     private void OnMouseUp()
