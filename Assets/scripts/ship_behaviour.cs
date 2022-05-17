@@ -10,7 +10,7 @@ public class ship_behaviour : MonoBehaviour
     public int ring_index, tile_index;
     public int ring_count, tile_count;
     public board_behaviour board;
-    private bool inward, outward, clockwise, counter_wise;
+    public bool inward, outward, clockwise, counter_wise;
     public bool shift;
 
     // Start is called before the first frame update
@@ -53,6 +53,7 @@ public class ship_behaviour : MonoBehaviour
             if (ring_index == -1)
             {
                 tile = center;
+                board.lose = true;
             }
             else
             {
@@ -75,7 +76,10 @@ public class ship_behaviour : MonoBehaviour
             }
         }
 
-        board.Reveal_tile(ring_index, tile_index);
+        if (board.state == 3)
+        {
+            board.Reveal_tile(ring_index, tile_index);
+        }
     }
 
     void Check_pos()
@@ -86,7 +90,9 @@ public class ship_behaviour : MonoBehaviour
             if (ring_index > 0)
             {
                 ring_index--;
-                board.Lower_Count();
+                int id = board.transform.GetChild(ring_index).GetChild(tile_index).gameObject.GetComponent<tile_behaviour>().number;
+                board.Lower_Count(id);
+                board.Hazard_effect(id, 2);
             }
 
         }
@@ -97,7 +103,9 @@ public class ship_behaviour : MonoBehaviour
             if (ring_index < ring_count)
             {
                 ring_index++;
-                board.Lower_Count();
+                int id = board.transform.GetChild(ring_index).GetChild(tile_index).gameObject.GetComponent<tile_behaviour>().number;
+                board.Lower_Count(id);
+                board.Hazard_effect(id, 0);
             }
         }
 
@@ -112,7 +120,9 @@ public class ship_behaviour : MonoBehaviour
             {
                 tile_index++;
             }
-            board.Lower_Count();
+            int id = board.transform.GetChild(ring_index).GetChild(tile_index).gameObject.GetComponent<tile_behaviour>().number;
+            board.Lower_Count(id);
+            board.Hazard_effect(id, 3);
         }
 
         if (counter_wise)
@@ -126,7 +136,9 @@ public class ship_behaviour : MonoBehaviour
             {
                 tile_index--;
             }
-            board.Lower_Count();
+            int id = board.transform.GetChild(ring_index).GetChild(tile_index).gameObject.GetComponent<tile_behaviour>().number;
+            board.Lower_Count(id);
+            board.Hazard_effect(id, 1);
         }
     }
 }

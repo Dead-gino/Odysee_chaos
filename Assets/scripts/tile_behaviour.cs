@@ -14,7 +14,11 @@ public class tile_behaviour : MonoBehaviour
     private bool rolled;
     private bool clicked;
     public int ring_amount;
+
+
     public int number;
+
+
     public GameObject Troy;
     public GameObject Ithaca;
     public GameObject Scheria;
@@ -101,11 +105,11 @@ public class tile_behaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!clicked && !reveal && board.state == 1)
+        if (!clicked && !reveal && (board.state == 1 || board.state == 6))
         {
             clicked = true;
             reveal = true;
-            board.Lower_Count();
+            board.Lower_Count(number);
         }
     }
     private void OnMouseUp()
@@ -123,48 +127,48 @@ public class tile_behaviour : MonoBehaviour
             {
                 case 1:  //troy
                     Troy.SetActive(true);
-                    break;
-                case 2:  //Ithaca
-                    Ithaca.SetActive(true);
-                    break;
-                case 3:  //Scheria
-                    Scheria.SetActive(true);
-                    break;
-                case 4:  //Djerba
-                    Djerba.SetActive(true);
-                    break;
-                case 5:  //Sparta
-                    Sparta.SetActive(true);
-                    break;
-                case 6:  //Pylos
-                    Pylos.SetActive(true);
-                    break;
-                case 7:  //Ogygia
-                    Ogygia.SetActive(true);
-                    break;
-                case 8:  //Aeaea
-                    Aeaea.SetActive(true);
-                    break;
-                case 9:  //Laestrygonia
+                    break;                
+                case 2:  //Laestrygonia
                     Laestrygonia.SetActive(true);
                     break;
-                case 10: //Sirens
-                    Sirens.SetActive(true);
-                    break;
-                case 11: //Wormhole
-                    Wormhole.SetActive(true);
-                    break;
-                case 12: //Blockade
-                    Blockade.SetActive(true);
-                    break;
-                case 13: //Portal
-                    Portal.SetActive(true);
-                    break;
-                case 14: //Wasteland
+                case 3: //Wasteland
                     Wasteland.SetActive(true);
                     break;
-                case 15: //Anomaly
+                case 4: //Asteroid
+                    Asteroid.SetActive(true);
+                    break;
+                case 5: //Anomaly
                     Anomaly.SetActive(true);
+                    break;
+                case 6: //Blockade
+                    Blockade.SetActive(true);
+                    break;
+                case 7: //Wormhole
+                    Wormhole.SetActive(true);
+                    break;
+                case 8: //Sirens
+                    Sirens.SetActive(true);
+                    break;
+                case 9: //Portal
+                    Portal.SetActive(true);
+                    break;
+                case 10:  //Ogygia
+                    Ogygia.SetActive(true);
+                    break;
+                case 11:  //Aeaea
+                    Aeaea.SetActive(true);
+                    break;
+                case 12:  //Djerba
+                    Djerba.SetActive(true);
+                    break;
+                case 13:  //Scheria
+                    Scheria.SetActive(true);
+                    break;
+                case 14:  //Sparta
+                    Sparta.SetActive(true);
+                    break;
+                case 15:  //Pylos
+                    Pylos.SetActive(true);
                     break;
                 case 16: //Olympus
                     Olympus.SetActive(true);
@@ -175,8 +179,8 @@ public class tile_behaviour : MonoBehaviour
                 case 18: //Underworld
                     Underworld.SetActive(true);
                     break;
-                case 19: //Asteroid
-                    Asteroid.SetActive(true);
+                case 19:  //Ithaca
+                    Ithaca.SetActive(true);
                     break;
                 default:
                     break;
@@ -233,7 +237,7 @@ public class tile_behaviour : MonoBehaviour
         text.text = text_num;
     }
 
-    void Roll_position(int n)
+    public void Roll_position(int n)
     {
         int num = board.Roll_location(n);
         number = num;

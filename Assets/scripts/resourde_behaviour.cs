@@ -9,10 +9,12 @@ public class resourde_behaviour : MonoBehaviour
     public int energ;
     public int fue;
 
+    public bool trade;
+
     // Start is called before the first frame update
     void Start()
     {
-        fue = energ = 0;
+        trade = false;
     }
 
     // Update is called once per frame
@@ -20,15 +22,19 @@ public class resourde_behaviour : MonoBehaviour
     {
         Display_resources(fue, energ);
 
-
-        //automate to be dependant on location
-        if (Input.GetKeyDown(KeyCode.F))
+        if (trade)
         {
-            fue++;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            energ++;
+            //automate to be dependant on location
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                fue++;
+                energ--;
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                energ++;
+                fue--;
+            }
         }
     }
 
