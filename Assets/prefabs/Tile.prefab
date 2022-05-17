@@ -101,7 +101,26 @@ MonoBehaviour:
   ring: 0
   shift: 0
   reveal: 0
+  ring_amount: 0
   number: 0
+  Troy: {fileID: 5606106551540816561, guid: 01176576eaaa449409dc95cee1ec974b, type: 3}
+  Ithaca: {fileID: 6527115666618677045, guid: 5bc79fe1d5dc0484d9a1c7f78e126926, type: 3}
+  Scheria: {fileID: 4347699182236423048, guid: 7c29ccad29d38bf4c9a5b4f3f0869133, type: 3}
+  Djerba: {fileID: 7232076141992272592, guid: 8f0148b4874087744b24cb51afa3cec4, type: 3}
+  Sparta: {fileID: 1177603752114954461, guid: 217c64bbb6bdf6447bd9be0b42ce473d, type: 3}
+  Pylos: {fileID: 834860230329581497, guid: 011ea69fffbd5c942b72ce9b1dff21e8, type: 3}
+  Ogygia: {fileID: 3472421300790648963, guid: 16dabd257e3630f479056f96209cdb40, type: 3}
+  Aeaea: {fileID: 2258669266550993137, guid: 0d9fb3f66ed03d54e98412c52a88ea60, type: 3}
+  Laestrygonia: {fileID: 9071716039592073205, guid: a71c4f19068885245881a08538362cac, type: 3}
+  Sirens: {fileID: 3007508146052831604, guid: dc88342c3af8e3f438c89d69caeed074, type: 3}
+  Wormhole: {fileID: 1465799715302831460, guid: 04023b837643b974d9ee7e7bb8346989, type: 3}
+  Blockade: {fileID: 6740284344317721584, guid: e8657862628f62d43bff50a5363c38b2, type: 3}
+  Portal: {fileID: 8768095086922328783, guid: 4ecdcf70d3ff70347a9c0cfb01c303ce, type: 3}
+  Wasteland: {fileID: 7582254593800565132, guid: 4b683a880b501654f985160898ff95ff, type: 3}
+  Anomaly: {fileID: 2562508214637787635, guid: dc73e380cc49ef6449554713c0fd2086, type: 3}
+  Olympus: {fileID: 7734831732576742522, guid: a628b2b6a71866a4ba4df7d88f54b5a2, type: 3}
+  Cloud: {fileID: 6657141163786562503, guid: 603c257b156bc314eb94b2a39837fca6, type: 3}
+  Underworld: {fileID: 6434665886487833127, guid: 6acde292da1f4e54c84bbe4385df0a4f, type: 3}
 --- !u!58 &3811001097416623352
 CircleCollider2D:
   m_ObjectHideFlags: 0

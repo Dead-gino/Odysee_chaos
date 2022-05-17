@@ -25,7 +25,14 @@ public class tile_behaviour : MonoBehaviour
     public GameObject Aeaea;
     public GameObject Laestrygonia;
     public GameObject Sirens;
-
+    public GameObject Wormhole;
+    public GameObject Blockade;
+    public GameObject Portal;
+    public GameObject Wasteland;
+    public GameObject Anomaly;
+    public GameObject Olympus;
+    public GameObject Cloud;
+    public GameObject Underworld;
 
     private board_behaviour board;
 
@@ -41,6 +48,7 @@ public class tile_behaviour : MonoBehaviour
         rolled = false;
         board = this.transform.parent.parent.gameObject.GetComponent<board_behaviour>();
         clicked = false;
+        
         Troy.SetActive(false);
         Ithaca.SetActive(false);
         Scheria.SetActive(false);
@@ -51,6 +59,14 @@ public class tile_behaviour : MonoBehaviour
         Aeaea.SetActive(false);
         Laestrygonia.SetActive(false);
         Sirens.SetActive(false);
+        Wormhole.SetActive(false);
+        Blockade.SetActive(false);
+        Portal.SetActive(false);
+        Wasteland.SetActive(false);
+        Anomaly.SetActive(false);
+        Olympus.SetActive(false);
+        Cloud.SetActive(false);
+        Underworld.SetActive(false);
         
         Roll_position(-1);
     }
@@ -133,8 +149,32 @@ public class tile_behaviour : MonoBehaviour
                 case 10: //Sirens
                     Sirens.SetActive(true);
                     break;
+                case 11: //Wormhole
+                    Wormhole.SetActive(true);
+                    break;
+                case 12: //Blockade
+                    Blockade.SetActive(true);
+                    break;
+                case 13: //Portal
+                    Portal.SetActive(true);
+                    break;
+                case 14: //Wasteland
+                    Wasteland.SetActive(true);
+                    break;
+                case 15: //Anomaly
+                    Anomaly.SetActive(true);
+                    break;
+                case 16: //Olympus
+                    Olympus.SetActive(true);
+                    break;
+                case 17: //Cloud
+                    Cloud.SetActive(true);
+                    break;
+                case 18: //Underworld
+                    Underworld.SetActive(true);
+                    break;
                 default:
-                break;
+                    break;
             }
         }
     }
@@ -151,12 +191,15 @@ public class tile_behaviour : MonoBehaviour
         Aeaea.SetActive(false);
         Laestrygonia.SetActive(false);
         Sirens.SetActive(false);
+        Wormhole.SetActive(false);
+        Blockade.SetActive(false);
+        Portal.SetActive(false);
+        Wasteland.SetActive(false);
+        Anomaly.SetActive(false);
+        Olympus.SetActive(false);
+        Cloud.SetActive(false);
+        Underworld.SetActive(false);
     }
-
-    private void ShowText()
-    {
-    }
-
 
     // Shift the tile in one ring
     // if it would enter the center, dissable for now.
