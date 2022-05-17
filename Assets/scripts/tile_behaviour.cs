@@ -33,6 +33,7 @@ public class tile_behaviour : MonoBehaviour
     public GameObject Olympus;
     public GameObject Cloud;
     public GameObject Underworld;
+    public GameObject Asteroid;
 
     private board_behaviour board;
 
@@ -67,6 +68,7 @@ public class tile_behaviour : MonoBehaviour
         Olympus.SetActive(false);
         Cloud.SetActive(false);
         Underworld.SetActive(false);
+        Asteroid.SetActive(false);
         
         Roll_position(-1);
     }
@@ -173,6 +175,9 @@ public class tile_behaviour : MonoBehaviour
                 case 18: //Underworld
                     Underworld.SetActive(true);
                     break;
+                case 19: //Asteroid
+                    Asteroid.SetActive(true);
+                    break;
                 default:
                     break;
             }
@@ -199,6 +204,7 @@ public class tile_behaviour : MonoBehaviour
         Olympus.SetActive(false);
         Cloud.SetActive(false);
         Underworld.SetActive(false);
+        Asteroid.SetActive(false);
     }
 
     // Shift the tile in one ring
