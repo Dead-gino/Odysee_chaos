@@ -14,9 +14,18 @@ public class tile_behaviour : MonoBehaviour
     private bool rolled;
     private bool clicked;
     public int ring_amount;
-
-    [Range(1, 21)]
     public int number;
+    public GameObject Troy;
+    public GameObject Ithaca;
+    public GameObject Scheria;
+    public GameObject Djerba;
+    public GameObject Sparta;
+    public GameObject Pylos;
+    public GameObject Ogygia;
+    public GameObject Aeaea;
+    public GameObject Laestrygonia;
+    public GameObject Sirens;
+
 
     private board_behaviour board;
 
@@ -32,7 +41,17 @@ public class tile_behaviour : MonoBehaviour
         rolled = false;
         board = this.transform.parent.parent.gameObject.GetComponent<board_behaviour>();
         clicked = false;
-
+        Troy.SetActive(false);
+        Ithaca.SetActive(false);
+        Scheria.SetActive(false);
+        Djerba.SetActive(false);
+        Sparta.SetActive(false);
+        Pylos.SetActive(false);
+        Ogygia.SetActive(false);
+        Aeaea.SetActive(false);
+        Laestrygonia.SetActive(false);
+        Sirens.SetActive(false);
+        
         Roll_position(-1);
     }
 
@@ -75,6 +94,69 @@ public class tile_behaviour : MonoBehaviour
     {
         clicked = false;
     }
+
+    // Mouse hover text
+
+    private void OnMouseOver() 
+    {
+       if (reveal == true)
+        {
+            switch (number)
+            {
+                case 1:  //troy
+                    Troy.SetActive(true);
+                    break;
+                case 2:  //Ithaca
+                    Ithaca.SetActive(true);
+                    break;
+                case 3:  //Scheria
+                    Scheria.SetActive(true);
+                    break;
+                case 4:  //Djerba
+                    Djerba.SetActive(true);
+                    break;
+                case 5:  //Sparta
+                    Sparta.SetActive(true);
+                    break;
+                case 6:  //Pylos
+                    Pylos.SetActive(true);
+                    break;
+                case 7:  //Ogygia
+                    Ogygia.SetActive(true);
+                    break;
+                case 8:  //Aeaea
+                    Aeaea.SetActive(true);
+                    break;
+                case 9:  //Laestrygonia
+                    Laestrygonia.SetActive(true);
+                    break;
+                case 10: //Sirens
+                    Sirens.SetActive(true);
+                    break;
+                default:
+                break;
+            }
+        }
+    }
+
+    private void OnMouseExit() 
+    {
+        Troy.SetActive(false);
+        Ithaca.SetActive(false);
+        Scheria.SetActive(false);
+        Djerba.SetActive(false);
+        Sparta.SetActive(false);
+        Pylos.SetActive(false);
+        Ogygia.SetActive(false);
+        Aeaea.SetActive(false);
+        Laestrygonia.SetActive(false);
+        Sirens.SetActive(false);
+    }
+
+    private void ShowText()
+    {
+    }
+
 
     // Shift the tile in one ring
     // if it would enter the center, dissable for now.
