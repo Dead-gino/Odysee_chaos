@@ -21,7 +21,7 @@ public class board_behaviour : MonoBehaviour
     public GameObject lost;
 
     private int step_count;
-    private int step_bonus;
+    public int step_bonus;
 
     public int portals;
 
@@ -34,7 +34,7 @@ public class board_behaviour : MonoBehaviour
     //6 = special state for revealing 3 locations
     public int state;
 
-    private bool free_fuel;
+    public bool free_fuel;
 
     private bool shift_lock;
 
@@ -57,6 +57,11 @@ public class board_behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if (lose)
         {
             lost.SetActive(true);
@@ -212,6 +217,11 @@ public class board_behaviour : MonoBehaviour
             state = 0;
         }
 
+        if (state == 6 && step_count == 0)
+        {
+            state = 4;
+        }
+
     }
 
     public int Roll_location(int old)
@@ -286,7 +296,25 @@ public class board_behaviour : MonoBehaviour
 
     public void Reveal_tile(int ring, int tile)
     {
-        transform.GetChild(ring).GetChild(tile).gameObject.GetComponent<tile_behaviour>().reveal = true;
+        tile_behaviour til = transform.GetChild(ring).GetChild(tile).gameObject.GetComponent<tile_behaviour>();
+        til.reveal = true;
+        if (!til.clicked && !til.reveal && (state == 1 || state == 6))
+        {
+            if (til.number == 16)
+            {
+                step_bonus = 1;
+            }
+            else if (til.number == 17)
+            {
+                free_fuel = true;
+            }
+            else if (til.number == 18)
+            {
+                Raise_Count();
+            }
+            til.clicked = true;
+            til.reveal = true;
+        }
     }
 
     //Re-rolls each tile
@@ -487,5 +515,11 @@ public class board_behaviour : MonoBehaviour
         transform.GetChild(rin).GetChild(lef_til).gameObject.GetComponent<tile_behaviour>().reveal = true;
         transform.GetChild(rin).GetChild(rig_til).gameObject.GetComponent<tile_behaviour>().reveal = true;
         transform.GetChild(out_rin).GetChild(til).gameObject.GetComponent<tile_behaviour>().reveal = true;
+    }
+
+    public void Raise_Count()
+    {
+        step_count++;
+        step_count++;
     }
 }

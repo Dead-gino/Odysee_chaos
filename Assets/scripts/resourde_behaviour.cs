@@ -8,6 +8,7 @@ public class resourde_behaviour : MonoBehaviour
 
     public int energ;
     public int fue;
+    public board_behaviour board;
 
     public bool trade;
 
@@ -44,6 +45,10 @@ public class resourde_behaviour : MonoBehaviour
         string energy_s = "Energy:\t";
         string new_line = "\n";
         string combined = fuel_s + fuel.ToString() + new_line + energy_s + energy.ToString();
+        if (board.free_fuel)
+        {
+            combined += (new_line + "!Next move free!");
+        }
         this.gameObject.GetComponent<TextMeshProUGUI>().text = combined;
 
     }

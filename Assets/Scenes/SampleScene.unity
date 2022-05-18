@@ -2629,8 +2629,10 @@ MonoBehaviour:
   resources: {fileID: 2083712209}
   ship: {fileID: 1219750058}
   lost: {fileID: 125527657}
+  step_bonus: 0
   portals: 0
   state: 0
+  free_fuel: 0
 --- !u!4 &1415960189
 Transform:
   m_ObjectHideFlags: 0
@@ -5509,6 +5511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energ: 7
   fue: 7
+  board: {fileID: 1415960188}
   trade: 0
 --- !u!114 &2083712210
 MonoBehaviour:

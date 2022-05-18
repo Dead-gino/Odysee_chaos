@@ -76,7 +76,7 @@ public class ship_behaviour : MonoBehaviour
             }
         }
 
-        if (board.state == 3)
+        if (board.state == 3 || board.state == 1 || board.state == 4)
         {
             board.Reveal_tile(ring_index, tile_index);
         }

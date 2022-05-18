@@ -12,7 +12,7 @@ public class tile_behaviour : MonoBehaviour
     private Transform position;
     private TextMeshPro text;
     private bool rolled;
-    private bool clicked;
+    public bool clicked;
     public int ring_amount;
 
 
@@ -107,6 +107,16 @@ public class tile_behaviour : MonoBehaviour
     {
         if (!clicked && !reveal && (board.state == 1 || board.state == 6))
         {
+            if (number == 16)
+            {
+                board.step_bonus = 1;
+            } else if (number == 17)
+            {
+                board.free_fuel = true;
+            } else if (number == 18)
+            {
+                board.Raise_Count();
+            }
             clicked = true;
             reveal = true;
             board.Lower_Count(number);
