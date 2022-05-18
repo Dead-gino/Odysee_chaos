@@ -2079,7 +2079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -697.09, y: 142}
+  m_AnchoredPosition: {x: -697.09, y: 130}
   m_SizeDelta: {x: 402.7091, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039695022
@@ -2512,8 +2512,8 @@ MonoBehaviour:
 
     A to move counter-clockwise
 
-    Space to
-    proceed to next turn-phase'
+    Escape
+    to close game'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5494,8 +5494,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -697.09, y: 236}
-  m_SizeDelta: {x: 200, y: 54.4402}
+  m_AnchoredPosition: {x: -697.09, y: 250}
+  m_SizeDelta: {x: 428.6946, y: 54.4402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2083712209
 MonoBehaviour:
@@ -5533,7 +5533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Fuel:\t\tX\nEnergy: \tY"
+  m_text: "Fuel:\t\tX\nEnergy: \tY\n!Next move Free!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
